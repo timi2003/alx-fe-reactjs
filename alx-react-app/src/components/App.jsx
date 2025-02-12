@@ -13,7 +13,7 @@ function App() {
   <MainContent />
   <Footer />
   <UserProfile name = "Alice" age = "25" bio = "Loves hiking and photography"/>
-  <UserProfile name = "Femi" age = "20" bio = "Loves playing football"/>
+  <UserProfile name = "Femigit remote remove origin" age = "20" bio = "Loves playing football"/>
   </>
  );
 }

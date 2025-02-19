@@ -8,9 +8,9 @@ function App() {
         { name: "Jane Doe", email: "jane.doe@example.com" });
  return(
     <>
-    <UserContext.provider value={userData}>
-    <ProfilePage />;
-      </UserContext.provider>
+    <UserContext.Provider value={userData}>
+    <ProfilePage />
+    </UserContext.Provider>
       </>
  );
 }

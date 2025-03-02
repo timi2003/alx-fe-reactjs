@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useRecipeStore from './useRecipeStore';
+import useRecipeStore from './recipeStore';
 
 const RecommendationsList = () => {
   const navigate = useNavigate();

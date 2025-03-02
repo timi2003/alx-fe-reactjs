@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import useRecipeStore from './useRecipeStore';
+import useRecipeStore from './recipeStore';
 
 const EditRecipeForm = () => {
   const { recipeId } = useParams();

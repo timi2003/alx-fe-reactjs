@@ -1,15 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useRecipeStore from './recipeStore';
+import { FaHeart, FaRegHeart, FaEdit, FaTrash } from 'react-icons/fa';
 
 const RecipeList = () => {
-  const navigate = useNavigate();
   const { filteredRecipes, favorites, addFavorite, removeFavorite, deleteRecipe } = useRecipeStore();
   
-  const handleViewDetails = (recipeId) => {
-    navigate(`/recipe/${recipeId}`);
-  };
-
   const handleFavoriteToggle = (e, recipeId) => {
+    e.preventDefault();
     e.stopPropagation();
     if (favorites.includes(recipeId)) {
       removeFavorite(recipeId);
@@ -19,15 +16,11 @@ const RecipeList = () => {
   };
 
   const handleDeleteRecipe = (e, recipeId) => {
+    e.preventDefault();
     e.stopPropagation();
     if (window.confirm('Are you sure you want to delete this recipe?')) {
       deleteRecipe(recipeId);
     }
-  };
-
-  const handleEditRecipe = (e, recipeId) => {
-    e.stopPropagation();
-    navigate(`/edit/${recipeId}`);
   };
 
   return (
@@ -38,27 +31,28 @@ const RecipeList = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredRecipes.map(recipe => (
-            <div 
+            <Link
               key={recipe.id}
-              className="border rounded-lg shadow-md hover:shadow-lg transition cursor-pointer p-4"
-              onClick={() => handleViewDetails(recipe.id)}
+              to={`/recipe/${recipe.id}`}
+              className="border rounded-lg shadow-md hover:shadow-lg transition p-4 block text-current no-underline"
             >
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-xl font-semibold">{recipe.title}</h3>
                 <div className="flex space-x-2">
-                  <button 
+                  <button
                     onClick={(e) => handleFavoriteToggle(e, recipe.id)}
                     className="text-red-500 hover:text-red-700"
                   >
                     {favorites.includes(recipe.id) ? <FaHeart /> : <FaRegHeart />}
                   </button>
-                  <button 
-                    onClick={(e) => handleEditRecipe(e, recipe.id)}
+                  <Link
+                    to={`/edit/${recipe.id}`}
+                    onClick={(e) => e.stopPropagation()}
                     className="text-blue-500 hover:text-blue-700"
                   >
                     <FaEdit />
-                  </button>
-                  <button 
+                  </Link>
+                  <button
                     onClick={(e) => handleDeleteRecipe(e, recipe.id)}
                     className="text-gray-500 hover:text-gray-700"
                   >
@@ -76,7 +70,7 @@ const RecipeList = () => {
                   {recipe.ingredients.length > 3 && '...'}
                 </p>
               )}
-            </div>
+            </Link>
           ))}
         </div>
       )}

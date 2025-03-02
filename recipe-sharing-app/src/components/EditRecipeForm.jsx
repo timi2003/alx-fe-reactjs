@@ -74,8 +74,8 @@ const EditRecipeForm = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     
     if (!validateForm()) {
       return;

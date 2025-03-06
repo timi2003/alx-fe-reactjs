@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import useRecipeStore from './recipeStore';
-import { FaHeart, FaRegHeart, FaEdit, FaTrash } from 'react-icons/fa';
 
 const RecipeList = () => {
   const { filteredRecipes, favorites, addFavorite, removeFavorite, deleteRecipe } = useRecipeStore();

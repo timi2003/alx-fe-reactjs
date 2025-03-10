@@ -1,37 +1,29 @@
 import { Link } from "react-router-dom"
 
-const Blog = () => {
-  // Sample blog posts data
-  const posts = [
-    {
-      id: 1,
-      title: "Understanding React Router",
-      excerpt: "Learn the basics of React Router and how to implement it in your projects.",
-    },
-    {
-      id: 2,
-      title: "Advanced Routing Techniques",
-      excerpt: "Explore nested routes, protected routes, and dynamic routing in React applications.",
-    },
-    {
-      id: 3,
-      title: "Authentication in React",
-      excerpt: "Implement user authentication and protected routes in your React applications.",
-    },
-  ]
 
+// Mock blog data
+const blogPosts = [
+  { id: 1, title: "Understanding React Router", excerpt: "Learn the basics of routing in React applications..." },
+  { id: 2, title: "Nested Routes in React Router", excerpt: "Discover how to create nested routes for complex UIs..." },
+  {
+    id: 3,
+    title: "Protected Routes and Authentication",
+    excerpt: "Implement authentication and protected routes in your app...",
+  },
+  { id: 4, title: "Dynamic Routing with Parameters", excerpt: "Handle dynamic content with parameterized routes..." },
+]
+
+export default function Blog() {
   return (
-    <div className="page">
-      <h1>Blog</h1>
-      <p>Explore our latest articles on React development.</p>
-
+    <div className="blog-container">
+      <h1 className="blog-title">Blog</h1>
       <div className="blog-list">
-        {posts.map((post) => (
-          <div key={post.id} className="blog-card">
-            <h2>{post.title}</h2>
-            <p>{post.excerpt}</p>
-            <Link to={`/blog/${post.id}`} className="read-more">
-              Read More
+        {blogPosts.map((post) => (
+          <div key={post.id} className="card blog-card">
+            <h2 className="blog-post-title">{post.title}</h2>
+            <p className="blog-excerpt">{post.excerpt}</p>
+            <Link to={`/blog/${post.id}`} className="blog-link">
+              Read more →
             </Link>
           </div>
         ))}
@@ -39,6 +31,4 @@ const Blog = () => {
     </div>
   )
 }
-
-export default Blog
 

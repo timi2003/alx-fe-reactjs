@@ -1,32 +1,29 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import { AuthProvider } from "./contexts/AuthContext"
-import Layout from "./components/Layout"
-import ProtectedRoute from "./components/ProtectedRoute"
-import Home from "./pages/Home"
-import About from "./pages/About"
+import { AuthProvider } from "./context/auth-context"
+import Layout from "./components/layout"
+import Home from "./pages/home"
+import Login from "./pages/login"
+import Profile from "./pages/profile"
+import ProfileDetails from "./pages/profile-details"
+import ProfileSettings from "./pages/profile-settings"
 import Blog from "./pages/Blog"
-import BlogPost from "./pages/BlogPost"
-import Profile from "./pages/Profile"
-import ProfileDetails from "./pages/Profile/ProfileDetails"
-import ProfileSettings from "./pages/Profile/ProfileSettings"
-import Login from "./pages/Login"
-import NotFound from "./pages/NotFound"
-import "./App.css"
+import BlogPost from "./pages/blog-post"
+import ProtectedRoute from "./components/protected-route"
+import NotFound from "./pages/not-found"
 
-function App() {
+export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* Public routes */}
+            {/* Home route */}
             <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="blog/:postId" element={<BlogPost />} />
+
+            {/* Login route */}
             <Route path="login" element={<Login />} />
 
-            {/* Protected routes */}
+            {/* Protected profile routes */}
             <Route
               path="profile"
               element={
@@ -35,20 +32,21 @@ function App() {
                 </ProtectedRoute>
               }
             >
-              {/* Nested routes */}
-              <Route index element={<Navigate to="details" replace />} />
-              <Route path="details" element={<ProfileDetails />} />
+              <Route index element={<ProfileDetails />} />
               <Route path="settings" element={<ProfileSettings />} />
             </Route>
 
-            {/* 404 route */}
-            <Route path="*" element={<NotFound />} />
+            {/* Blog routes */}
+            <Route path="blog" element={<Blog />} />
+            <Route path="blog/:id" element={<BlogPost />} />
+
+            {/* 404 handling */}
+            <Route path="404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
           </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
   )
 }
-
-export default App;
 

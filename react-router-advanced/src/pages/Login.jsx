@@ -2,100 +2,51 @@
 
 import { useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import { useAuth } from "../contexts/AuthContext"
+import { useAuth } from "../context/auth-context"
 
-const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  })
-  const [error, setError] = useState("")
+
+export default function Login() {
+  const [username, setUsername] = useState("")
   const { login } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
 
-  // Get the page they were trying to access before being redirected to login
-  const from = location.state?.from?.pathname || "/profile"
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
+  // Get the page the user was trying to visit
+  const from = location.state?.from || "/"
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setError("")
-
-    // Simple validation
-    if (!formData.email || !formData.password) {
-      setError("Please fill in all fields")
-      return
+    if (username.trim()) {
+      login(username)
+      // Redirect to the page they were trying to visit
+      navigate(from, { replace: true })
     }
-
-    // For demo purposes, any email/password combination works
-    // In a real app, you would validate against a backend
-    const userData = {
-      name: formData.email.split("@")[0], // Use part of email as name for demo
-      email: formData.email,
-      joinDate: new Date().toLocaleDateString(),
-      bio: "This is a demo user account.",
-    }
-
-    // Log the user in
-    login(userData)
-
-    // Navigate to the page they were trying to access
-    navigate(from, { replace: true })
   }
 
   return (
-    <div className="page login-page">
-      <h1>Login</h1>
-      <p>Please log in to access your profile and protected content.</p>
-
-      {error && <div className="error-message">{error}</div>}
-
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter your email"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter your password"
-          />
-        </div>
-
-        <button type="submit" className="login-btn">
-          Login
-        </button>
-      </form>
-
-      <div className="login-note">
-        <p>
-          <strong>Note:</strong> For this demo, any email and password will work.
-        </p>
+    <div className="login-container">
+      <h1 className="login-title">Login</h1>
+      <div className="card login-card">
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="form-control"
+              placeholder="Enter any username"
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary login-btn">
+            Login
+          </button>
+        </form>
+        <p className="login-note">This is a demo login. Enter any username to proceed.</p>
       </div>
     </div>
   )
 }
-
-export default Login
 

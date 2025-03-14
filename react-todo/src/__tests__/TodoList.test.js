@@ -1,9 +1,9 @@
-// src/__tests__/TodoList.test.js
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import TodoList from "../TodoList";
 import AddTodoForm from "../AddTodoForm";
 
+// Mock data for initial todos
 const mockTodos = [
   { id: 1, text: "Learn React", completed: false },
   { id: 2, text: "Write Tests", completed: false }

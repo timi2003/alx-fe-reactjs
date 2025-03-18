@@ -12,7 +12,7 @@ function UserProfile() {
         className="rounded-full md:w-36 md:h-36 sm:w-24 sm:h-24 mx-auto transition-transform duration-300 ease-in-out
         hover:scale-110 text-blue-900" />
 
-        <h1 className="md:text-xl sm:text-lg text-blue-800 my-4 hover:text-blue-500">John Doe</h1>
+        <h1 className="md:text-xl sm:text-lg text-blue-800 my-4 hover:text-blue-500">Kolawole Oluwafemiy</h1>
 
         <p className="text-gray-600 sm:text-sm md:text-base hover:text-blue-500">Developer at Example Co. Loves to write code and explore new technologies.</p>
       </div>

@@ -1,41 +1,45 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import data from "../data.json"; 
+import { useState } from "react";
 
-function RecipeDetail() {
-    const { id } = useParams();
-    const [recipe, setRecipe] = useState(null);
+const AddRecipeForm = () => {
+    const [title, setTitle] = useState("");
+    const [summary, setSummary] = useState("");
 
-    useEffect(() => {
-        const foundRecipe = data.find((recipe) => recipe.id === parseInt(id));  
-        setRecipe(foundRecipe);
-    }, [id]);
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+    };
 
-    if (!recipe) return <p className="text-center text-gray-700 mt-10">Recipe not found.</p>;
+    const handleSummaryChange = (e) => {
+        setSummary(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Logic to add the new recipe
+        console.log("New Recipe:", { title, summary });
+    };
 
     return (
-        <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-            <img src={recipe.image} alt={recipe.title} className="w-full h-60 object-cover rounded-md"/>
-            <h1 className="text-3xl font-bold mt-4">{recipe.title}</h1>
-            <p className="text-gray-700 mt-2">{recipe.summary}</p>
-
-            {/* Display Ingredients */}
-            <h2 className="text-2xl font-semibold mt-4">Ingredients</h2>
-            <ul className="list-disc list-inside text-gray-700">
-                {recipe.ingredients?.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                ))}
-            </ul>
-
-            {/* Display Instructions */}
-            <h2 className="text-2xl font-semibold mt-4">Instructions</h2>
-            <ol className="list-decimal list-inside text-gray-700">
-                {recipe.instructions?.map((step, index) => (
-                    <li key={index}>{step}</li>
-                ))}
-            </ol>
-        </div>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+            <div className="mb-4">
+                <label className="block text-gray-700">Title</label>
+                <input
+                    type="text"
+                    value={title}
+                    onChange={handleTitleChange}
+                    className="w-full p-2 border border-gray-300 rounded mt-1"
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-gray-700">Summary</label>
+                <textarea
+                    value={summary}
+                    onChange={handleSummaryChange}
+                    className="w-full p-2 border border-gray-300 rounded mt-1"
+                />
+            </div>
+            <button type="submit" className="bg-indigo-500 text-white p-2 rounded">Add Recipe</button>
+        </form>
     );
-}
+};
 
-export default RecipeDetail;
+export default AddRecipeForm;

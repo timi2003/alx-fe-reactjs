@@ -1,20 +1,80 @@
 [
-    {
-      "id": 1,
-      "title": "Spaghetti Carbonara",
-      "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 2,
-      "title": "Chicken Tikka Masala",
-      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-      "image": "https://via.placeholder.com/150"
-    },
-    {
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "200g spaghetti",
+      "2 large eggs",
+      "100g pancetta or bacon, diced",
+      "50g parmesan cheese, grated",
+      "Black pepper to taste",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Boil the spaghetti in salted water until al dente, then drain.",
+      "In a pan, cook the pancetta or bacon until crispy.",
+      "In a bowl, whisk the eggs with grated parmesan and black pepper.",
+      "Mix the hot spaghetti with the cooked pancetta, then quickly stir in the egg mixture to create a creamy sauce.",
+      "Serve immediately with extra parmesan and black pepper."
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "500g boneless chicken, cut into cubes",
+      "1 cup plain yogurt",
+      "2 tablespoons lemon juice",
+      "1 teaspoon turmeric",
+      "1 teaspoon garam masala",
+      "1 teaspoon ground cumin",
+      "1 teaspoon paprika",
+      "2 tablespoons butter",
+      "1 onion, finely chopped",
+      "2 cloves garlic, minced",
+      "1 teaspoon grated ginger",
+      "1 can (400g) crushed tomatoes",
+      "1/2 cup heavy cream",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Marinate the chicken with yogurt, lemon juice, turmeric, garam masala, cumin, and paprika. Let it sit for at least 1 hour.",
+      "Grill or pan-fry the chicken until slightly charred and cooked through.",
+      "In a pan, melt butter and sauté the onions until soft.",
+      "Add garlic, ginger, and crushed tomatoes, then cook until the sauce thickens.",
+      "Add the grilled chicken to the sauce and stir in the heavy cream.",
+      "Simmer for a few minutes and serve with rice or naan."
+    ]
+  },
+  {
     "id": 3,
     "title": "Chocolate Cake",
     "image": "https://source.unsplash.com/300x200/?cake",
-    "summary": "A rich and moist chocolate cake for dessert lovers."
+    "summary": "A rich and moist chocolate cake for dessert lovers.",
+    "ingredients": [
+      "1 1/2 cups all-purpose flour",
+      "1 cup granulated sugar",
+      "1/2 cup unsweetened cocoa powder",
+      "1 teaspoon baking soda",
+      "1/2 teaspoon baking powder",
+      "1/2 teaspoon salt",
+      "1/2 cup vegetable oil",
+      "1 cup buttermilk",
+      "2 large eggs",
+      "1 teaspoon vanilla extract",
+      "1/2 cup hot water"
+    ],
+    "instructions": [
+      "Preheat oven to 350°F (175°C) and grease a cake pan.",
+      "In a bowl, whisk together flour, sugar, cocoa powder, baking soda, baking powder, and salt.",
+      "Add oil, buttermilk, eggs, and vanilla extract, then mix until smooth.",
+      "Gradually add hot water and stir until combined.",
+      "Pour the batter into the cake pan and bake for 30-35 minutes or until a toothpick comes out clean.",
+      "Let the cake cool before serving."
+    ]
   }
- ]
+]

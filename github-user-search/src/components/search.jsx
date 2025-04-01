@@ -43,7 +43,7 @@ const Search = () => {
 
             {/* Conditional Rendering */}
             {loading && <p className="text-gray-600 mt-3">Loading...</p>}
-            {error && <p className="text-red-500 mt-3">Looks like we can't find the user.</p>}
+            {error && <p className="text-red-500 mt-3">Looks like we cant find the user</p>}
 
             {userData && (
                 <div className="mt-5 p-4 border rounded-lg shadow">

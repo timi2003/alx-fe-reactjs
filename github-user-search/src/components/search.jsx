@@ -56,7 +56,7 @@ const Search = () => {
                         rel="noopener noreferrer"
                         className="block text-center text-blue-500 mt-2 hover:underline"
                     >
-                        View GitHub Profile
+                        View Your GitHub Profile
                     </a>
                 </div>
             )}

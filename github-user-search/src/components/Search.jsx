@@ -4,6 +4,7 @@ import { fetchUserData } from "../services/githubService";
 const Search = () => {
     const [username, setUsername] = useState("");
     const [userData, setUserData] = useState(null);
+    const [repos, setRepos] = useState([]);  // New state for repositories
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -14,10 +15,16 @@ const Search = () => {
         setLoading(true);
         setError(false);
         setUserData(null);
+        setRepos([]);
 
         const data = await fetchUserData(username);
         if (data) {
             setUserData(data);
+
+            // Fetch user repositories
+            const repoResponse = await fetch(data.repos_url);
+            const repoData = await repoResponse.json();
+            setRepos(repoData.slice(0, 5)); // Limit to 5 repos
         } else {
             setError(true);
         }
@@ -41,9 +48,8 @@ const Search = () => {
                 </button>
             </form>
 
-            {/* Conditional Rendering */}
             {loading && <p className="text-gray-600 mt-3">Loading...</p>}
-            {error && <p className="text-red-500 mt-3">Looks like we cant find the user</p>}
+            {error && <p className="text-red-500 mt-3">Looks like we can't find the user</p>}
 
             {userData && (
                 <div className="mt-5 p-4 border rounded-lg shadow">
@@ -58,6 +64,22 @@ const Search = () => {
                     >
                         View GitHub Profile
                     </a>
+
+                    {/* Display Repositories */}
+                    {repos.length > 0 && (
+                        <div className="mt-4">
+                            <h4 className="text-md font-semibold text-gray-700">Top Repositories:</h4>
+                            <ul className="mt-2">
+                                {repos.map((repo) => (
+                                    <li key={repo.id} className="mt-1">
+                                        <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                                            {repo.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             )}
         </div>
@@ -65,4 +87,3 @@ const Search = () => {
 };
 
 export default Search;
-
